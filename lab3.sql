@@ -36,4 +36,24 @@ where p_email = 'p1@jmu.edu';
 delete from professor
 where p_email = 'p1@jmu.edu'
 --you need to update course then professor cause then the first professor will still be teaching that course. 
+--Q2.7
+select * from enroll
+--Q2.8 
+select c_number,COUNT(*) as num_student
+from enroll
+group by c_number
+order by num_student desc
+limit 1
+--Q2.9
+select professor.p_name, course.c_name
+from professor
+inner join course
+on professor.p_email = course.p_email
+--Q2.10
+select professor.p_name, COUNT(course.c_number) as num_course_taught
+from professor
+inner join course on professor.p_email = course.p_email
+group by professor.p_name
+order by num_course_taught desc
+limit 1;
 
